@@ -11,13 +11,15 @@
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     {{-- Open Graph Meta Tags --}}
-    <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('og_title', 'PT Jago Bangun Persada - Hunian Damai Sejahtera')">
-    <meta property="og:description" content="@yield('og_description', 'PT Jago Bangun Persada - Developer Profesional Membangun Hunian Berkualitas Untuk Kehidupan Yang Lebih Baik')">
-    <meta property="og:image" content="@yield('og_image', asset('assets/img/banner/banner1.png'))">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('og_title', $ogTitle ?? 'PT Jago Bangun Persada - Hunian Damai Sejahtera')">
+    <meta property="og:description" content="@yield('og_description', $ogDescription ?? 'PT Jago Bangun Persada - Developer Profesional Membangun Hunian Berkualitas Untuk Kehidupan Yang Lebih Baik')">
+    <meta property="og:image" content="@yield('og_image', $ogImage ?? asset('assets/img/banner/banner1.png'))">
+    <meta property="og:image:secure_url" content="@yield('og_image', $ogImage ?? asset('assets/img/banner/banner1.png'))">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="315">
     <meta property="og:site_name" content="PT Jago Bangun Persada">
     <meta property="og:locale" content="id_ID">
 

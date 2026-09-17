@@ -43,3 +43,21 @@ if (! function_exists('image_url')) {
         return asset('storage/' . ltrim((string) $value, '/'));
     }
 }
+
+if (! function_exists('cloudinary_og_image')) {
+    function cloudinary_og_image($value, $fallback = null): string
+    {
+        $url = image_url($value, $fallback);
+
+        if (! is_string($url) || ! Str::contains($url, 'res.cloudinary.com')) {
+            return $url;
+        }
+
+        return preg_replace(
+            '#/upload/(?!w_600,h_315,c_fill,q_auto,f_jpg/)#',
+            '/upload/w_600,h_315,c_fill,q_auto,f_jpg/',
+            $url,
+            1
+        ) ?? $url;
+    }
+}

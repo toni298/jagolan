@@ -7,8 +7,7 @@
 @section('og_type', 'article')
 @section('og_title', $post->title . ' - PT Jago Bangun Persada')
 @section('og_description', Str::limit(strip_tags($post->content), 160))
-@section('og_image', $post->featured_image ? image_url($post->featured_image) :
-    asset('assets/img/banner/banner1.png'))
+@section('og_image', cloudinary_og_image($post->featured_image, asset('assets/img/banner/banner1.png')))
 @section('og_url', route('posts.show', $post->slug))
 
 {{-- Additional OG tags for article --}}

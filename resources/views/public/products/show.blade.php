@@ -9,8 +9,8 @@
 @section('og_title', $product->title ?: $product->name)
 @section('og_description', $product->description ? Str::limit(strip_tags($product->description), 160) : 'Detail produk '
     . $product->name . ' - PT Jago Bangun Persada')
-@section('og_image', $product->banner_image ? image_url($product->banner_image) : ($product->images->first() ?
-    image_url($product->images->first()->image_path) : asset('assets/img/banner/banner1.png')))
+@section('og_image', cloudinary_og_image($product->banner_image ?: $product->images->first()?->image_path,
+    asset('assets/img/banner/banner1.png')))
 @section('og_url', route('products.show', $product->slug))
 @section('canonical', route('products.show', $product->slug))
 

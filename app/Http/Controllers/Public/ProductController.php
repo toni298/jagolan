@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -47,7 +48,15 @@ class ProductController extends Controller
             }])
             ->firstOrFail();
 
-        return view('public.products.show', compact('product'));
+        return view('public.products.show', [
+            'product' => $product,
+            'ogTitle' => $product->title ?: $product->name,
+            'ogDescription' => Str::limit(strip_tags($product->description ?: 'Detail produk ' . $product->name), 150),
+            'ogImage' => cloudinary_og_image(
+                $product->banner_image ?: $product->images->first()?->image_path,
+                asset('assets/img/banner/banner1.png')
+            ),
+        ]);
     }
 
     private function getFilteredProducts(Request $request)
