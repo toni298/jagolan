@@ -18,6 +18,7 @@ class UpdateUserRequest extends FormRequest
             'email' => ['required', 'email', 'unique:users,email,' . $this->route('user')],
             'password' => ['nullable', 'min:8', 'confirmed'],
             'is_active' => ['boolean'],
+            'avatar' => ['nullable', 'file', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ];
     }
 }

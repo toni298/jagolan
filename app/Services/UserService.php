@@ -7,14 +7,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\UploadedFile;
 
 class UserService
 {
+    public function __construct(
+        protected ImageService $imageService
+    ) {}
+
     public function create(array $data): User
     {
         return DB::transaction(function () use ($data) {
             $data['password'] = Hash::make($data['password']);
             $data['role'] = 'admin';
+
+            if (isset($data['avatar']) && $data['avatar'] instanceof UploadedFile) {
+                $data['avatar'] = $this->imageService->optimizeAndStore($data['avatar'], 'users/avatars');
+            }
 
             $user = User::create($data);
             
@@ -35,6 +44,10 @@ class UserService
                 $data['password'] = Hash::make($data['password']);
             } else {
                 unset($data['password']);
+            }
+
+            if (isset($data['avatar']) && $data['avatar'] instanceof UploadedFile) {
+                $data['avatar'] = $this->imageService->optimizeAndStore($data['avatar'], 'users/avatars');
             }
 
             $user->update($data);

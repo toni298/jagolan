@@ -83,6 +83,7 @@ class UserController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->editColumn('avatar', fn ($row) => $row->avatar ? image_url($row->avatar) : null)
             ->addColumn('status_badge', function ($row) {
                 return $this->buildStatusBadge($row->is_active);
             })

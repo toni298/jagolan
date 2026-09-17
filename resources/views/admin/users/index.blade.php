@@ -100,7 +100,7 @@ $(document).ready(function() {
         ajax: "{{ route('admin.users.index') }}",
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
-            { data: 'avatar', name: 'avatar', orderable: false, searchable: false, render: function(d, type, row) { if (d) return '<img src="/storage/' + d + '" alt="Avatar" class="table-cell-avatar">'; return '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(row.name) + '&background=3B82F6&color=fff&size=68" alt="Avatar" class="table-cell-avatar">'; } },
+            { data: 'avatar', name: 'avatar', orderable: false, searchable: false, render: function(d, type, row) { if (d) return '<img src="' + d + '" alt="Avatar" class="table-cell-avatar">'; return '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(row.name) + '&background=3B82F6&color=fff&size=68" alt="Avatar" class="table-cell-avatar">'; } },
             { data: 'name', name: 'name', render: function(d) { return '<div class="table-cell-name">' + d + '</div>'; } },
             { data: 'email', name: 'email', render: function(d) { return '<span style="color:var(--gray-500)">' + d + '</span>'; } },
             { data: 'role', name: 'role', render: function(d) { return '<span class="badge-status badge-admin">' + d.toUpperCase() + '</span>'; } },
@@ -111,7 +111,7 @@ $(document).ready(function() {
         drawCallback: function(s) { var api = this.api(); $('#tableCount').text(api.page.info().recordsDisplay); $('#usersTable').show(); $('#tablePlaceholder').hide(); renderPagination(api.page.info(), api); updateInfo(s);
             // Mobile card rendering
             renderMobileCards('#usersTable', function(row, idx) {
-                var imgHtml = row.avatar ? '<img src="/storage/' + row.avatar + '" class="mobile-card-img" alt="">' : '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(row.name) + '&background=3B82F6&color=fff&size=80" class="mobile-card-img" alt="">';
+                var imgHtml = row.avatar ? '<img src="' + row.avatar + '" class="mobile-card-img" alt="">' : '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(row.name) + '&background=3B82F6&color=fff&size=80" class="mobile-card-img" alt="">';
                 var actions = '<div class="mobile-card-actions">' +
                     '<a href="/admin/users/' + row.id + '/edit" class="btn-icon btn-icon-primary"><i class="fas fa-pen"></i> Edit</a>' +
                     '<button class="btn-icon btn-icon-danger" onclick="deleteUser(\'' + row.id + '\')"><i class="fas fa-trash"></i> Hapus</button>' +
