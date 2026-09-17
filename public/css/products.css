@@ -300,6 +300,7 @@ section.products-section {
    ============================================ */
 .product-card {
     background: #FFFFFF;
+    position: relative;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
@@ -312,6 +313,20 @@ section.products-section {
 .product-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.product-card-link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+}
+
+.product-card-link:focus-visible {
+    outline: 3px solid #D4AF37;
+    outline-offset: -3px;
 }
 
 .product-image {
@@ -375,6 +390,10 @@ section.products-section {
     transform: scale(1.1);
 }
 
+.product-card > .wishlist-btn {
+    z-index: 3;
+}
+
 .wishlist-btn.active {
     color: #ef4444;
 }
@@ -424,21 +443,8 @@ section.products-section {
     line-height: 20px;
 }
 
-.product-name a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s;
-    outline: none;
-}
-
-.product-name a:hover {
+.product-card-link:hover .product-name {
     color: #0F2F72;
-}
-
-.product-name a:focus-visible {
-    outline: 2px solid #0F2F72;
-    outline-offset: 2px;
-    border-radius: 4px;
 }
 
 /* Product Type */
@@ -517,14 +523,8 @@ section.products-section {
     outline: none;
 }
 
-.product-cta:hover {
+.product-card-link:hover .product-cta {
     color: #0F2F72;
-}
-
-.product-cta:focus-visible {
-    outline: 2px solid #0F2F72;
-    outline-offset: 2px;
-    border-radius: 4px;
 }
 
 .product-cta i {

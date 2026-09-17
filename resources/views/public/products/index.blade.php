@@ -104,43 +104,44 @@
             <div class="products-grid">
                 @forelse($products as $product)
                     <article class="product-card">
-                        <div class="product-image">
-                            @if ($product->banner_image)
-                                <img src="{{ image_url($product->banner_image) }}" alt="{{ $product->name }}"
-                                    loading="lazy">
-                            @else
-                                <div class="product-placeholder">
-                                    <i class="fa-solid fa-house"></i>
-                                    <span>{{ $product->name }}</span>
-                                </div>
-                            @endif
+                        <a href="{{ route('products.show', $product->slug) }}" class="product-card-link"
+                            aria-label="Lihat detail {{ $product->name }}">
+                            <div class="product-image">
+                                @if ($product->banner_image)
+                                    <img src="{{ image_url($product->banner_image) }}" alt="{{ $product->name }}"
+                                        loading="lazy">
+                                @else
+                                    <div class="product-placeholder">
+                                        <i class="fa-solid fa-house"></i>
+                                        <span>{{ $product->name }}</span>
+                                    </div>
+                                @endif
 
-                            @if ($product->category)
-                                <span class="product-badge">{{ $product->category->name }}</span>
-                            @endif
+                                @if ($product->category)
+                                    <span class="product-badge">{{ $product->category->name }}</span>
+                                @endif
+                            </div>
 
-                            <button class="wishlist-btn" aria-label="Tambah ke wishlist">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
+                            <div class="product-content">
+                                <h3 class="product-name">{{ $product->name }}</h3>
 
-                        <div class="product-content">
-                            <h3 class="product-name">
-                                <a href="{{ route('products.show', $product->slug) }}">{{ $product->name }}</a>
-                            </h3>
+                                @if ($product->category)
+                                    <div class="product-type">
+                                        <span class="type-dot"></span>
+                                        {{ $product->category->name }}
+                                    </div>
+                                @endif
 
-                            @if ($product->category)
-                                <div class="product-type">
-                                    <span class="type-dot"></span>
-                                    {{ $product->category->name }}
-                                </div>
-                            @endif
+                                <span class="product-cta">
+                                    Lihat Detail
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
 
-                            <a href="{{ route('products.show', $product->slug) }}" class="product-cta">
-                                Lihat Detail
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
+                        <button type="button" class="wishlist-btn" aria-label="Tambah ke wishlist">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
                     </article>
                 @empty
                     <div class="empty-state">
