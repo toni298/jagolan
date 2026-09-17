@@ -12,6 +12,7 @@ use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
 use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Encoders\JpegEncoder;
 use App\Jobs\OptimizeImageJob;
+use Illuminate\Http\UploadedFile;
 
 class ImageService
 {
@@ -94,27 +95,29 @@ class ImageService
     {
         // Fallback: store original file if no driver available
         if (!$this->canProcessImages()) {
-            return $file->store($directory, 'public');
+            return $this->storeOnCloudinary($file, $directory);
         }
 
         $fileName = Str::random(20) . '.webp';
         $storagePath = "{$directory}/{$fileName}";
 
-        // Read and process image
-        $image = $this->manager->read($file->getRealPath());
+        try {
+            $image = $this->manager->read($file->getRealPath());
 
-        // Resize if needed (maintain aspect ratio)
-        if ($image->width() > $maxWidth) {
-            $image->scale(width: $maxWidth);
+            if ($image->width() > $maxWidth) {
+                $image->scale(width: $maxWidth);
+            }
+
+            $encoded = $image->encode(new WebpEncoder($quality));
+
+            $disk = Storage::disk('cloudinary');
+            $disk->put($storagePath, (string) $encoded, ['resource_type' => 'image']);
+
+            return $disk->url($storagePath);
+        } catch (\Throwable $e) {
+            Log::warning('ImageService: Cloudinary direct upload fallback triggered', ['error' => $e->getMessage()]);
+            return $this->storeOnCloudinary($file, $directory);
         }
-
-        // Encode to WebP
-        $encoded = $image->encode(new WebpEncoder($quality));
-
-        // Store to disk
-        Storage::disk('public')->put($storagePath, (string) $encoded);
-
-        return $storagePath;
     }
 
     /**
@@ -129,12 +132,10 @@ class ImageService
      */
     public function optimizeAndStore($file, string $directory = 'products', ?string $filename = null, int $maxWidth = 1280, int $quality = 75): string
     {
-        // Extend execution time for large images
         @set_time_limit(120);
 
-        // Fallback: store original file if no driver available
         if (!$this->canProcessImages()) {
-            return $file->store($directory, 'public');
+            return $this->storeOnCloudinary($file, $directory, $filename);
         }
 
         $extension = 'webp';
@@ -142,32 +143,28 @@ class ImageService
         $storagePath = "{$directory}/{$fileName}";
 
         try {
-            // Read and process image
             $image = $this->manager->read($file->getRealPath());
 
-            // Resize if needed (maintain aspect ratio)
             if ($image->width() > $maxWidth) {
                 $image->scale(width: $maxWidth);
             }
 
-            // Encode to WebP
             $encoded = $image->encode(new WebpEncoder($quality));
             $encodedData = (string) $encoded;
 
-            // Store to disk
-            Storage::disk('public')->put($storagePath, $encodedData);
+            $cloudinaryDisk = Storage::disk('cloudinary');
+            $cloudinaryDisk->put($storagePath, $encodedData, ['resource_type' => 'image']);
 
-            // Free memory
             unset($image, $encoded, $encodedData);
 
-            return $storagePath;
+            return $cloudinaryDisk->url($storagePath);
         } catch (\Exception $e) {
             Log::error('ImageService: Error during optimization', [
                 'error' => $e->getMessage(),
                 'file' => $file->getClientOriginalName(),
             ]);
-            // Fallback to original file on error
-            return $file->store($directory, 'public');
+
+            return $this->storeOnCloudinary($file, $directory, $filename);
         }
     }
 
@@ -177,12 +174,18 @@ class ImageService
      */
     public function storeQuick($file, string $directory = 'products'): string
     {
-        $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
-        $storagePath = "{$directory}/{$fileName}";
+        return $this->storeOnCloudinary($file, $directory);
+    }
 
-        Storage::disk('public')->put($storagePath, file_get_contents($file->getRealPath()));
+    public function storeOnCloudinary(UploadedFile $file, string $directory = 'products', ?string $filename = null): string
+    {
+        $fileName = $filename ?? Str::random(20) . '.' . strtolower($file->getClientOriginalExtension() ?: 'jpg');
+        $path = trim($directory, '/') . '/' . $fileName;
 
-        return $storagePath;
+        $cloudinaryDisk = Storage::disk('cloudinary');
+        $cloudinaryDisk->put($path, file_get_contents($file->getRealPath()), ['resource_type' => 'image']);
+
+        return $cloudinaryDisk->url($path);
     }
 
     /**

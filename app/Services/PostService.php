@@ -17,7 +17,7 @@ class PostService
             $data['user_id'] = Auth::id();
 
             if (isset($data['featured_image']) && $data['featured_image'] instanceof UploadedFile) {
-                $data['featured_image'] = $data['featured_image']->store('posts', 'public');
+                $data['featured_image'] = app(ImageService::class)->storeOnCloudinary($data['featured_image'], 'posts');
             }
 
             if (($data['status'] ?? null) === 'published' && empty($data['published_at'])) {
@@ -45,9 +45,9 @@ class PostService
 
             if (isset($data['featured_image']) && $data['featured_image'] instanceof UploadedFile) {
                 if ($post->featured_image) {
-                    Storage::disk('public')->delete($post->featured_image);
+                    Storage::disk('cloudinary')->delete(str_replace(config('app.url'), '', $post->featured_image));
                 }
-                $data['featured_image'] = $data['featured_image']->store('posts', 'public');
+                $data['featured_image'] = app(ImageService::class)->storeOnCloudinary($data['featured_image'], 'posts');
             }
 
             $post->update($data);

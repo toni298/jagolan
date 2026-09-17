@@ -70,7 +70,7 @@ class ProductService
 
             if (isset($data['banner_image']) && $data['banner_image'] instanceof UploadedFile) {
                 if ($product->banner_image) {
-                    Storage::disk('public')->delete($product->banner_image);
+                    Storage::disk('cloudinary')->delete(str_replace(config('app.url'), '', $product->banner_image));
                 }
                 $data['banner_image'] = $this->imageService->optimizeAndStore($data['banner_image'], 'products');
             }
