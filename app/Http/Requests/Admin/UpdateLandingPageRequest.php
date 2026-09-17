@@ -18,7 +18,7 @@ class UpdateLandingPageRequest extends FormRequest
             'theme' => ['nullable', 'string', 'in:default,red,green'],
 
             // Hero
-            'hero_title' => ['required', 'string', 'max:255'],
+            'hero_title' => ['nullable', 'string', 'max:255'],
             'hero_subtitle' => ['nullable', 'string', 'max:1000'],
             'hero_image' => ['nullable', 'file', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
 

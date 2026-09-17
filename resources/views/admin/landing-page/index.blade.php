@@ -913,10 +913,10 @@
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Title <span class="text-danger">*</span></label>
+                                            <label class="form-label">Title</label>
                                             <input type="text" name="hero_title"
                                                 value="{{ old('hero_title', $content['hero']['title'] ?? '') }}"
-                                                class="form-control @error('hero_title') is-invalid @enderror" required>
+                                                class="form-control @error('hero_title') is-invalid @enderror">
                                             @error('hero_title')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
