@@ -128,6 +128,7 @@ class ProductController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->editColumn('banner_image', fn ($row) => $row->banner_image ? image_url($row->banner_image) : null)
             ->addColumn('category_name', fn ($row) => e($row->category->name ?? '-'))
             ->addColumn('status_badge', fn ($row) => $this->buildStatusBadge($row->status))
             ->rawColumns(['status_badge'])

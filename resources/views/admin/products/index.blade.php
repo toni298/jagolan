@@ -167,7 +167,7 @@
                         orderable: false,
                         searchable: false,
                         render: function(d) {
-                            if (d) return '<img src="/storage/' + d +
+                            if (d) return '<img src="' + d +
                                 '" alt="Banner" class="table-cell-image">';
                             return '<div class="table-cell-placeholder"><i class="fas fa-image"></i></div>';
                         }
@@ -227,8 +227,8 @@
                     updateInfo(s);
                     // Mobile card rendering
                     renderMobileCards('#productsTable', function(row, idx) {
-                        var imgHtml = row.banner_image ? '<img src="/storage/' + row
-                            .banner_image + '" class="mobile-card-img" alt="">' :
+                        var imgHtml = row.banner_image ? '<img src="' + row.banner_image +
+                            '" class="mobile-card-img" alt="">' :
                             '<div class="mobile-card-img-placeholder"><i class="fas fa-image"></i></div>';
                         var actions = '<div class="mobile-card-actions">' +
                             '<a href="' + editUrl.replace(':id', row.id) +
