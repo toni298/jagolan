@@ -1,0 +1,20 @@
+name: project-context
+priority: 100
+auto_activate: true
+triggers:
+  - context
+  - project
+  - codebase
+  - requirements
+  - stack
+  - constraints
+  - existing project
+dependencies:
+  []
+related:
+  - analysis
+  - writing-plans
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

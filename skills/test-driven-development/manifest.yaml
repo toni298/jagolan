@@ -1,0 +1,19 @@
+name: test-driven-development
+priority: 80
+auto_activate: true
+triggers:
+  - test
+  - tdd
+  - unit test
+  - integration test
+  - coverage
+  - regression
+dependencies:
+  []
+related:
+  - code-review
+  - debugging
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

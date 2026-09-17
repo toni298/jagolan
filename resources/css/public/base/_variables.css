@@ -1,0 +1,1134 @@
+/* ============================================
+   CSS VARIABLES - THEME SYSTEM
+   ============================================ */
+
+/* Default Theme (Navy Blue) */
+:root {
+    --primary-dark: #0d1d48;
+    --primary: #164eb4;
+    --primary-light: #1f5fc8;
+    --accent: #d4af37;
+
+    /* Overlay gradients for hero - Full gradient overlay */
+    --overlay-start: rgba(13, 29, 72, 0.95);
+    --overlay-mid: rgba(13, 29, 72, 0.6);
+    --overlay-end: rgba(13, 29, 72, 0.15);
+
+    /* Header background */
+    --header-bg: rgba(8, 14, 31, 0.95);
+
+    /* Legacy support */
+    --navy: #0d1d48;
+    --navy2: #0f2f72;
+    --gold: #d4af37;
+    --black: #050816;
+    --white: #fff;
+    --gray: #f5f7fb;
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 60px;
+    --space-section: 100px;
+}
+
+/* Red Theme (Meriah) */
+body.theme-red {
+    --primary-dark: #991b1b;
+    --primary: #b91c1c;
+    --primary-light: #dc2626;
+    --accent: #d4af37;
+
+    /* Overlay gradients - Full gradient overlay (red) */
+    --overlay-start: rgba(139, 24, 24, 0.95);
+    --overlay-mid: rgba(185, 28, 28, 0.6);
+    --overlay-end: rgba(220, 38, 38, 0.15);
+
+    /* Header background - Dark red */
+    --header-bg: rgba(80, 15, 15, 0.95);
+}
+
+/* Red Theme - Hero Buttons Override */
+/* Primary CTA - White background with red text */
+body.theme-red .hero-actions .btn-primary {
+    background: #fff;
+    color: #8b0000 !important;
+    border: 2px solid #fff;
+}
+
+body.theme-red .hero-actions .btn-primary i {
+    color: #8b0000 !important;
+}
+
+body.theme-red .hero-actions .btn-primary:hover {
+    background: #8b0000;
+    color: #fff !important;
+    border-color: #8b0000;
+    box-shadow:
+        0 8px 30px rgba(139, 0, 0, 0.4),
+        0 0 40px rgba(139, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+body.theme-red .hero-actions .btn-primary:hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Secondary CTA - White outline */
+body.theme-red .hero-actions .btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: #fff !important;
+}
+
+body.theme-red .hero-actions .btn-secondary i {
+    color: #fff !important;
+}
+
+body.theme-red .hero-actions .btn-secondary:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #8b0000 !important;
+    box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.3),
+        0 0 40px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+body.theme-red .hero-actions .btn-secondary:hover i {
+    color: #8b0000 !important;
+}
+
+/* Non-hero buttons keep original red style with border */
+body.theme-red .btn-primary:not(.hero-actions .btn-primary) {
+    background: #ff0000;
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body.theme-red .btn-primary:not(.hero-actions .btn-primary) i {
+    color: #fff !important;
+}
+
+body.theme-red .btn-primary:not(.hero-actions .btn-primary):hover {
+    background: #cc0000;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 8px 30px rgba(139, 24, 24, 0.4),
+        0 0 40px rgba(153, 27, 27, 0.3);
+}
+
+body.theme-red .btn-primary:not(.hero-actions .btn-primary):hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+body.theme-red .btn-secondary:not(.hero-actions .btn-secondary) {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff !important;
+}
+
+body.theme-red .btn-secondary:not(.hero-actions .btn-secondary) i {
+    color: #fff !important;
+}
+
+body.theme-red .btn-secondary:not(.hero-actions .btn-secondary):hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-red .btn-secondary:not(.hero-actions .btn-secondary):hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Red Theme - Footer Override - removed, using gradient from bottom section */
+
+body.theme-red .footer-overlay {
+    background:
+        /* Left side decorative polygon - BOLD red */
+        linear-gradient(
+            135deg,
+            rgba(220, 38, 38, 0.35) 0%,
+            rgba(185, 28, 28, 0.25) 30%,
+            transparent 50%
+        ),
+        /* Center subtle glow */
+        radial-gradient(
+                circle at top center,
+                rgba(255, 120, 120, 0.06),
+                transparent 55%
+            );
+    opacity: 1;
+    clip-path: polygon(
+        0 0,
+        35% 0,
+        25% 100%,
+        0 100%,
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* Red Theme - Footer Decorative Elements - Architectural Style */
+/* Diagonal line pattern matching certificates section */
+body.theme-red .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.08) 0 1px,
+        transparent 1px 26px
+    );
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Soft polygon bottom-right matching certificates section */
+body.theme-red .footer::after {
+    content: "";
+    position: absolute;
+    bottom: -140px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    background: linear-gradient(
+        135deg,
+        rgba(220, 38, 38, 0.16),
+        rgba(185, 28, 28, 0.08)
+    );
+    clip-path: polygon(0 30%, 70% 0, 100% 100%, 0% 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Red Theme - Section Labels & Tags */
+body.theme-red .about-label,
+body.theme-red .section-label {
+    color: #c62828;
+}
+
+body.theme-red .about-content h2,
+body.theme-red .projects-header h2 {
+    color: #8b0000;
+}
+
+/* Red Theme - Buttons in Sections */
+body.theme-red .about-btn,
+body.theme-red .projects-btn {
+    background: #b71c1c;
+}
+
+body.theme-red .about-btn:hover,
+body.theme-red .projects-btn:hover {
+    background: #8b0000;
+    box-shadow:
+        0 8px 30px rgba(183, 28, 28, 0.4),
+        0 0 40px rgba(139, 0, 0, 0.3);
+}
+
+/* Red Theme - Project Cards Overlay */
+body.theme-red .project-card:hover .project-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(183, 28, 28, 0.15) 0%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+/* Red Theme - Core Values Section */
+body.theme-red .core-values {
+    background: linear-gradient(90deg, #4a0000, #6b0000);
+}
+
+/* Red Theme - Visi Misi Section */
+body.theme-red .visi-misi {
+    background: linear-gradient(135deg, #3a0000, #5a0808);
+}
+
+body.theme-red .visi-misi-glow {
+    background: radial-gradient(
+        circle,
+        rgba(220, 38, 38, 0.12),
+        transparent 70%
+    );
+}
+
+body.theme-red .visi-misi-label {
+    color: #ef4444;
+}
+
+body.theme-red .visi-misi-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(139, 0, 0, 0.6);
+}
+
+body.theme-red .visi-misi-card:hover {
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(220, 38, 38, 0.12);
+    border-color: rgba(220, 38, 38, 0.4);
+}
+
+body.theme-red .visi-misi-card-icon {
+    background: linear-gradient(135deg, #8b0000, #b71c1c);
+    box-shadow:
+        0 0 25px rgba(220, 38, 38, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.theme-red .visi-misi-card:hover .visi-misi-card-icon {
+    box-shadow:
+        0 0 35px rgba(220, 38, 38, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+body.theme-red .visi-misi-accent {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+body.theme-red .visi-misi-list li i {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.4);
+}
+
+body.theme-red .visi-misi-card-divider {
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(220, 38, 38, 0.5),
+        transparent
+    );
+}
+
+/* Red Theme - Estate Section */
+body.theme-red .estate-section {
+    border-top: 1px solid #8b0000;
+}
+
+body.theme-red .estate-overlay {
+    background: linear-gradient(
+        90deg,
+        rgba(58, 0, 0, 0.92),
+        rgba(74, 0, 0, 0.8)
+    );
+}
+
+body.theme-red .estate-label {
+    color: #ef4444;
+}
+
+body.theme-red .estate-item:hover .estate-icon {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(220, 38, 38, 0.6);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.3);
+}
+
+body.theme-red .estate-cta {
+    background: rgba(107, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.theme-red .estate-btn {
+    background: #ffffff;
+    color: #8b0000;
+}
+
+body.theme-red .estate-btn:hover {
+    box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(139, 0, 0, 0.3);
+}
+
+/* Red Theme - Products Page */
+body.theme-red section.products-hero {
+    background: linear-gradient(135deg, #4a0000 0%, #6b0000 100%);
+}
+
+body.theme-red .products-hero::after {
+    background: radial-gradient(
+        circle,
+        rgba(239, 68, 68, 0.12) 0%,
+        transparent 70%
+    );
+}
+
+body.theme-red section.stats-bar {
+    background: linear-gradient(135deg, #4a0000 0%, #6b0000 100%);
+}
+
+body.theme-red .stat-card .stat-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+body.theme-red .filter-search input:focus {
+    border-color: #b71c1c;
+    box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.12);
+}
+
+body.theme-red .filter-type select:focus,
+body.theme-red .filter-sort select:focus {
+    border-color: #b71c1c;
+    box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.12);
+}
+
+body.theme-red .filter-count strong {
+    color: #8b0000;
+}
+
+body.theme-red .product-badge {
+    background: #8b0000;
+}
+
+body.theme-red .type-dot {
+    background: #ef4444;
+}
+
+body.theme-red .product-location i,
+body.theme-red .feature-item i {
+    color: #b71c1c;
+}
+
+body.theme-red .product-name a:hover {
+    color: #b71c1c;
+}
+
+body.theme-red .product-name a:focus-visible {
+    outline-color: #b71c1c;
+}
+
+body.theme-red .product-cta {
+    color: #8b0000;
+}
+
+body.theme-red .product-cta:hover {
+    color: #b71c1c;
+}
+
+body.theme-red .product-cta:focus-visible {
+    outline-color: #b71c1c;
+}
+
+body.theme-red .product-card:hover .product-cta i {
+    color: #b71c1c;
+}
+
+body.theme-red .empty-state-icon {
+    background: linear-gradient(
+        135deg,
+        rgba(183, 28, 28, 0.1),
+        rgba(239, 68, 68, 0.1)
+    );
+}
+
+body.theme-red .empty-state-icon i {
+    color: #b71c1c;
+}
+
+body.theme-red .empty-state h3 {
+    color: #8b0000;
+}
+
+body.theme-red .empty-state .btn-reset {
+    background: #8b0000;
+}
+
+body.theme-red .empty-state .btn-reset:hover {
+    background: #b71c1c;
+    box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3);
+}
+
+body.theme-red .cursor-btn {
+    color: #8b0000;
+}
+
+body.theme-red .cursor-btn:hover:not(.disabled) {
+    background: #8b0000;
+    border-color: #8b0000;
+    box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3);
+}
+
+/* Red Theme - Product Detail Page */
+body.theme-red .pd-breadcrumb {
+    background: #4a0000;
+}
+
+body.theme-red .pd-badge {
+    background: rgba(139, 0, 0, 0.92);
+}
+
+body.theme-red .pd-thumb.active {
+    border-color: #b71c1c;
+}
+
+body.theme-red .pd-eyebrow {
+    color: #b71c1c;
+}
+
+body.theme-red .pd-title {
+    color: #4a0000;
+}
+
+body.theme-red .pd-title em {
+    color: #b71c1c;
+}
+
+body.theme-red .pd-spec-ic {
+    background: #ffe5e5;
+    color: #b71c1c;
+}
+
+body.theme-red .pd-spec-val {
+    color: #4a0000;
+}
+
+body.theme-red .pd-cta {
+    background: #8b0000;
+    box-shadow: 0 12px 26px rgba(139, 0, 0, 0.3);
+}
+
+body.theme-red .pd-cta:hover {
+    background: #b71c1c;
+}
+
+body.theme-red .pd-cta-notes i {
+    color: #b71c1c;
+}
+
+body.theme-red .pd-features {
+    background: #fff5f5;
+}
+
+body.theme-red .pd-feature i {
+    color: #8b0000;
+}
+
+body.theme-red .pd-feature h4 {
+    color: #4a0000;
+}
+
+body.theme-red .pd-vtab:hover {
+    border-color: #b71c1c;
+    color: #b71c1c;
+}
+
+body.theme-red .pd-vtab.active {
+    background: #8b0000;
+    border-color: #8b0000;
+}
+
+/* Green Theme (Hari Raya Idul Fitri) */
+body.theme-green {
+    --primary-dark: #047857;
+    --primary: #059669;
+    --primary-light: #10b981;
+    --accent: #fbbf24;
+
+    /* Overlay gradients - Full gradient overlay (green) */
+    --overlay-start: rgba(4, 60, 40, 0.95);
+    --overlay-mid: rgba(4, 120, 87, 0.6);
+    --overlay-end: rgba(16, 185, 129, 0.15);
+
+    /* Header background - Dark green */
+    --header-bg: rgba(4, 60, 40, 0.95);
+}
+
+/* Green Theme - Hero Buttons Override */
+/* Primary CTA - White background with primary text */
+body.theme-green .hero-actions .btn-primary {
+    background: #fff;
+    color: #047857 !important;
+    border: 2px solid #fff;
+}
+
+body.theme-green .hero-actions .btn-primary i {
+    color: #047857 !important;
+}
+
+body.theme-green .hero-actions .btn-primary:hover {
+    background: #047857;
+    color: #fff !important;
+    border-color: #047857;
+    box-shadow:
+        0 8px 30px rgba(4, 120, 87, 0.4),
+        0 0 40px rgba(4, 120, 87, 0.3);
+    transform: translateY(-2px);
+}
+
+body.theme-green .hero-actions .btn-primary:hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Secondary CTA - White outline */
+body.theme-green .hero-actions .btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: #fff !important;
+}
+
+body.theme-green .hero-actions .btn-secondary i {
+    color: #fff !important;
+}
+
+body.theme-green .hero-actions .btn-secondary:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #047857 !important;
+    box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.3),
+        0 0 40px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+body.theme-green .hero-actions .btn-secondary:hover i {
+    color: #047857 !important;
+}
+
+/* Non-hero buttons keep original green style with border */
+body.theme-green .btn-primary:not(.hero-actions .btn-primary) {
+    background: #047857;
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body.theme-green .btn-primary:not(.hero-actions .btn-primary) i {
+    color: #fff !important;
+}
+
+body.theme-green .btn-primary:not(.hero-actions .btn-primary):hover {
+    background: #059669;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 8px 30px rgba(4, 120, 87, 0.4),
+        0 0 40px rgba(5, 150, 105, 0.3);
+}
+
+body.theme-green .btn-primary:not(.hero-actions .btn-primary):hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+body.theme-green .btn-secondary:not(.hero-actions .btn-secondary) {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff !important;
+}
+
+body.theme-green .btn-secondary:not(.hero-actions .btn-secondary) i {
+    color: #fff !important;
+}
+
+body.theme-green .btn-secondary:not(.hero-actions .btn-secondary):hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-green .btn-secondary:not(.hero-actions .btn-secondary):hover i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Green Theme - Footer Override - removed, using gradient from bottom section */
+
+body.theme-green .footer-overlay {
+    background:
+        /* Left side decorative polygon - Green */
+        linear-gradient(
+            135deg,
+            rgba(16, 185, 129, 0.35) 0%,
+            rgba(5, 150, 105, 0.25) 30%,
+            transparent 50%
+        ),
+        /* Center subtle glow */
+        radial-gradient(
+                circle at top center,
+                rgba(167, 243, 208, 0.06),
+                transparent 55%
+            );
+    opacity: 1;
+    clip-path: polygon(
+        0 0,
+        35% 0,
+        25% 100%,
+        0 100%,
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* Green Theme - Footer Decorative Elements */
+body.theme-green .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.08) 0 1px,
+        transparent 1px 26px
+    );
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.theme-green .footer::after {
+    content: "";
+    position: absolute;
+    bottom: -140px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    background: linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.16),
+        rgba(5, 150, 105, 0.08)
+    );
+    clip-path: polygon(0 30%, 70% 0, 100% 100%, 0% 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Green Theme - Section Labels & Tags */
+body.theme-green .about-label,
+body.theme-green .section-label {
+    color: #059669;
+}
+
+body.theme-green .about-content h2,
+body.theme-green .projects-header h2 {
+    color: #047857;
+}
+
+/* Green Theme - Buttons in Sections */
+body.theme-green .about-btn,
+body.theme-green .projects-btn {
+    background: #059669;
+}
+
+body.theme-green .about-btn:hover,
+body.theme-green .projects-btn:hover {
+    background: #047857;
+    box-shadow:
+        0 8px 30px rgba(5, 150, 105, 0.4),
+        0 0 40px rgba(4, 120, 87, 0.3);
+}
+
+/* Green Theme - Project Cards Overlay */
+body.theme-green .project-card:hover .project-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(5, 150, 105, 0.15) 0%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+/* Green Theme - Core Values Section */
+body.theme-green .core-values {
+    background: linear-gradient(90deg, #022c22, #064e3b);
+}
+
+/* Green Theme - Visi Misi Section */
+body.theme-green .visi-misi {
+    background: linear-gradient(135deg, #022c22, #064e3b);
+}
+
+body.theme-green .visi-misi-glow {
+    background: radial-gradient(
+        circle,
+        rgba(16, 185, 129, 0.12),
+        transparent 70%
+    );
+}
+
+body.theme-green .visi-misi-label {
+    color: #10b981;
+}
+
+body.theme-green .visi-misi-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(4, 120, 87, 0.6);
+}
+
+body.theme-green .visi-misi-card:hover {
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+body.theme-green .visi-misi-card-icon {
+    background: linear-gradient(135deg, #047857, #059669);
+    box-shadow:
+        0 0 25px rgba(16, 185, 129, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.theme-green .visi-misi-card:hover .visi-misi-card-icon {
+    box-shadow:
+        0 0 35px rgba(16, 185, 129, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+body.theme-green .visi-misi-accent {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+body.theme-green .visi-misi-list li i {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+body.theme-green .visi-misi-card-divider {
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(16, 185, 129, 0.5),
+        transparent
+    );
+}
+
+/* Green Theme - Estate Section */
+body.theme-green .estate-section {
+    border-top: 1px solid #047857;
+}
+
+body.theme-green .estate-overlay {
+    background: linear-gradient(
+        90deg,
+        rgba(2, 44, 34, 0.92),
+        rgba(6, 78, 59, 0.8)
+    );
+}
+
+body.theme-green .estate-label {
+    color: #10b981;
+}
+
+body.theme-green .estate-item:hover .estate-icon {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+}
+
+body.theme-green .estate-cta {
+    background: rgba(6, 78, 59, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.theme-green .estate-btn {
+    background: #ffffff;
+    color: #047857;
+}
+
+body.theme-green .estate-btn:hover {
+    box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(4, 120, 87, 0.3);
+}
+
+/* Green Theme - Products Page */
+body.theme-green section.products-hero {
+    background: linear-gradient(135deg, #022c22 0%, #064e3b 100%);
+}
+
+body.theme-green .products-hero::after {
+    background: radial-gradient(
+        circle,
+        rgba(16, 185, 129, 0.12) 0%,
+        transparent 70%
+    );
+}
+
+body.theme-green section.stats-bar {
+    background: linear-gradient(135deg, #022c22 0%, #064e3b 100%);
+}
+
+body.theme-green .stat-card .stat-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+body.theme-green .filter-search input:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+body.theme-green .filter-type select:focus,
+body.theme-green .filter-sort select:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+body.theme-green .filter-count strong {
+    color: #047857;
+}
+
+body.theme-green .product-badge {
+    background: #047857;
+}
+
+body.theme-green .type-dot {
+    background: #10b981;
+}
+
+body.theme-green .product-location i,
+body.theme-green .feature-item i {
+    color: #059669;
+}
+
+body.theme-green .product-name a:hover {
+    color: #059669;
+}
+
+body.theme-green .product-name a:focus-visible {
+    outline-color: #059669;
+}
+
+body.theme-green .product-cta {
+    color: #047857;
+}
+
+body.theme-green .product-cta:hover {
+    color: #059669;
+}
+
+body.theme-green .product-cta:focus-visible {
+    outline-color: #059669;
+}
+
+body.theme-green .product-card:hover .product-cta i {
+    color: #059669;
+}
+
+body.theme-green .empty-state-icon {
+    background: linear-gradient(
+        135deg,
+        rgba(5, 150, 105, 0.1),
+        rgba(16, 185, 129, 0.1)
+    );
+}
+
+body.theme-green .empty-state-icon i {
+    color: #059669;
+}
+
+body.theme-green .empty-state h3 {
+    color: #047857;
+}
+
+body.theme-green .empty-state .btn-reset {
+    background: #047857;
+}
+
+body.theme-green .empty-state .btn-reset:hover {
+    background: #059669;
+    box-shadow: 0 8px 24px rgba(4, 120, 87, 0.3);
+}
+
+body.theme-green .cursor-btn {
+    color: #047857;
+}
+
+body.theme-green .cursor-btn:hover:not(.disabled) {
+    background: #047857;
+    border-color: #047857;
+    box-shadow: 0 8px 24px rgba(4, 120, 87, 0.3);
+}
+
+/* Green Theme - Product Detail Page */
+body.theme-green .pd-breadcrumb {
+    background: #022c22;
+}
+
+body.theme-green .pd-badge {
+    background: rgba(4, 120, 87, 0.92);
+}
+
+body.theme-green .pd-thumb.active {
+    border-color: #059669;
+}
+
+body.theme-green .pd-eyebrow {
+    color: #059669;
+}
+
+body.theme-green .pd-title {
+    color: #022c22;
+}
+
+body.theme-green .pd-title em {
+    color: #059669;
+}
+
+body.theme-green .pd-spec-ic {
+    background: #d1fae5;
+    color: #059669;
+}
+
+body.theme-green .pd-spec-val {
+    color: #022c22;
+}
+
+body.theme-green .pd-cta {
+    background: #047857;
+    box-shadow: 0 12px 26px rgba(4, 120, 87, 0.3);
+}
+
+body.theme-green .pd-cta:hover {
+    background: #059669;
+}
+
+body.theme-green .pd-cta-notes i {
+    color: #059669;
+}
+
+body.theme-green .pd-features {
+    background: #ecfdf5;
+}
+
+body.theme-green .pd-feature i {
+    color: #047857;
+}
+
+body.theme-green .pd-feature h4 {
+    color: #022c22;
+}
+
+body.theme-green .pd-vtab:hover {
+    border-color: #059669;
+    color: #059669;
+}
+
+body.theme-green .pd-vtab.active {
+    background: #047857;
+    border-color: #047857;
+}
+
+/* Green Theme - Idul Fitri Special Accents */
+/* Gold accent for special elements representing kemenangan */
+body.theme-green .footer-brand h3,
+body.theme-green .footer-brand .brand-text {
+    color: #fbbf24;
+}
+
+body.theme-green .footer-social a:hover {
+    background: #fbbf24;
+    color: #022c22;
+}
+
+body.theme-green .footer-link:hover {
+    color: #fbbf24;
+}
+
+/* ============================================
+   CAROUSEL ARROWS & DOTS - THEME SUPPORT
+   ============================================ */
+
+/* Default Theme (Navy) - Carousel */
+.lp-carousel-arrow:hover {
+    background: #0d1d48;
+    color: #fff;
+}
+
+.lp-carousel-dots button.active {
+    background: #0d1d48;
+}
+
+/* Red Theme - Carousel */
+body.theme-red .lp-carousel-arrow:hover {
+    background: #dc2626;
+    color: #fff;
+}
+
+body.theme-red .lp-carousel-dots button.active {
+    background: #dc2626;
+}
+
+/* Green Theme - Carousel */
+body.theme-green .lp-carousel-arrow:hover {
+    background: #059669;
+    color: #fff;
+}
+
+body.theme-green .lp-carousel-dots button.active {
+    background: #059669;
+}
+
+/* Section Tag - Theme Support */
+body.theme-red .section-tag {
+    color: #dc2626;
+}
+
+body.theme-green .section-tag {
+    color: #059669;
+}
+
+/* Default section tag color */
+.section-tag {
+    color: #0d1d48;
+}
+
+/* Modal Button - Theme Support */
+body.theme-red .lp-modal-btn {
+    background: #dc2626;
+}
+
+body.theme-red .lp-modal-btn:hover {
+    background: #b91c1c;
+}
+
+body.theme-green .lp-modal-btn {
+    background: #059669;
+}
+
+body.theme-green .lp-modal-btn:hover {
+    background: #047857;
+}
+
+/* Default modal button */
+.lp-modal-btn {
+    background: #0d1d48;
+}
+
+.lp-modal-btn:hover {
+    background: #16306d;
+}
+
+/* ============================================
+   FOOTER GRADIENT - THEME SUPPORT
+   Top lighter (soft), bottom darker for depth
+   ============================================ */
+
+/* Red Theme - Footer Gradient (warm dark tones, not flat red) */
+body.theme-red .footer {
+    background: linear-gradient(
+        180deg,
+        #2a1215 0%,
+        #1c0b0e 35%,
+        #120608 70%,
+        #0a0304 100%
+    );
+}
+
+/* Green Theme - Footer Gradient (deep forest tones) */
+body.theme-green .footer {
+    background: linear-gradient(
+        180deg,
+        #0f2922 0%,
+        #0a1c17 35%,
+        #05120e 70%,
+        #020a08 100%
+    );
+}

@@ -1,0 +1,20 @@
+name: release-management
+priority: 74
+auto_activate: true
+triggers:
+  - release
+  - version
+  - changelog
+  - bump
+  - publish
+  - semver
+  - upgrade dependencies
+  - update packages
+dependencies: []
+related:
+  - devops-engineering
+  - git-version-control
+  - security-audit
+shared:
+  - ../shared/decision-framework.md
+  - ../shared/severity-levels.md

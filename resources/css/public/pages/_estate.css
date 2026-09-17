@@ -1,0 +1,189 @@
+/* ============================================
+   ESTATE SECTION
+   ============================================ */
+.estate-section {
+    position: relative;
+    padding: var(--space-section) 0 0;
+    background-image: url(../footer/arc.jpg);
+    background-size: cover;
+    background-position: center;
+    border-top: 1px solid #12336f;
+}
+
+.estate-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(2, 9, 25, 0.92),
+        rgba(2, 9, 25, 0.8)
+    );
+}
+
+.estate-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.estate-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3xl);
+}
+
+.estate-info {
+    width: 340px;
+    min-width: 340px;
+    flex-shrink: 0;
+}
+
+.estate-label {
+    display: block;
+    color: #4d8fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: var(--space-sm);
+}
+
+.estate-info h2 {
+    color: white;
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: var(--space-lg);
+    font-weight: 800;
+}
+
+.estate-info p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+.estate-features {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.estate-item {
+    position: relative;
+    flex: 1;
+    padding: 0 var(--space-lg);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.estate-item:first-child {
+    padding-left: 0;
+}
+.estate-item:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+.estate-item:hover {
+    transform: translateY(-6px);
+}
+
+.estate-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.estate-item:hover .estate-icon {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(77, 143, 255, 0.6);
+    box-shadow: 0 0 25px rgba(77, 143, 255, 0.2);
+}
+
+.estate-icon i {
+    font-size: 28px;
+    color: white;
+}
+
+.estate-item h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    line-height: 1.3;
+}
+
+.estate-item p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* Hide HTML estate-divider, we use CSS border-right instead */
+.estate-divider {
+    display: none;
+}
+
+.estate-cta {
+    margin-top: var(--space-2xl);
+    background: rgba(8, 29, 72, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px 20px 0 0;
+    padding: var(--space-lg) 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.estate-cta-text h3 {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.estate-cta-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.estate-btn {
+    width: 260px;
+    min-width: 260px;
+    height: 56px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #081d48;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition:
+        transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.estate-btn:hover {
+    transform: scale(1.04);
+    box-shadow:
+        0 8px 30px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(8, 31, 69, 0.3);
+}

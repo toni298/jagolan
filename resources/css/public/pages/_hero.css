@@ -1,0 +1,220 @@
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--black), var(--primary-dark));
+    color: #fff;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 0 15px var(--primary-light),
+        0 0 30px var(--primary),
+        0 0 60px var(--primary-dark),
+        0 0 120px var(--primary-dark);
+    opacity: 0.7;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    right: -250px;
+    top: -200px;
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        var(--overlay-start) 0%,
+        var(--overlay-start) 20%,
+        var(--overlay-mid) 40%,
+        var(--overlay-end) 65%,
+        transparent 100%
+    );
+}
+
+.hero .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 40%;
+}
+
+.hero-tag {
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    color: #fff;
+    font-size: 65px;
+    line-height: 1.02;
+    font-weight: 800;
+    margin-top: var(--space-lg);
+    max-width: 550px;
+}
+
+.hero p {
+    color: #fff;
+    opacity: 0.92;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: var(--space-lg);
+    max-width: 520px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: var(--space-2xl);
+}
+
+/* ============================================
+   HERO SECTION - MOBILE (≤768px)
+   Custom mobile-first layout, not just scaling
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 620px;
+        max-height: 700px;
+        padding: 80px 0 60px;
+    }
+
+    .hero::before {
+        width: 400px;
+        height: 400px;
+        right: -150px;
+        top: -100px;
+    }
+
+    /* Full gradient overlay for better text contrast on mobile */
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            var(--overlay-start) 0%,
+            var(--overlay-start) 30%,
+            var(--overlay-mid) 60%,
+            var(--overlay-end) 85%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+    }
+
+    .hero .container {
+        padding: 0 24px;
+        align-items: flex-start;
+    }
+
+    /* Single column layout, full width */
+    .hero-content {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-tag {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    /* Responsive heading size */
+    .hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+        margin-top: var(--space-md);
+        max-width: 100%;
+    }
+
+    /* Full width paragraph */
+    .hero p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin-top: var(--space-md);
+        max-width: 100%;
+        opacity: 0.95;
+    }
+
+    /* Stacked vertical buttons, full width */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-top: var(--space-xl);
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        height: 54px;
+        font-size: 15px;
+    }
+}
+
+/* Extra small mobile (≤480px) */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 580px;
+        padding: 70px 0 50px;
+    }
+
+    .hero .container {
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        height: 50px;
+        font-size: 14px;
+    }
+}

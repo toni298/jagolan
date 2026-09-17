@@ -1,0 +1,90 @@
+/* ============================================
+   CORE VALUES
+   ============================================ */
+.core-values {
+    background: linear-gradient(90deg, #031533, #051d48);
+    padding: var(--space-2xl) 0;
+}
+
+.values-desc {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0 0 8px 8px;
+}
+
+.values-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    flex: 1;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.value-item:hover {
+    transform: translateY(-4px);
+}
+
+.value-icon {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition:
+        background 0.4s ease,
+        transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.value-item:hover .value-icon {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.08);
+}
+
+.value-icon i {
+    color: white;
+    font-size: 30px;
+}
+
+.value-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.value-content h3 {
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    line-height: 1.2;
+}
+
+.value-content p {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.value-divider {
+    width: 1px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}

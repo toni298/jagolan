@@ -1,0 +1,185 @@
+/* ============================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --space-section: 60px;
+    }
+
+    /* Header: logo only */
+    .menu,
+    .nav-cta {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    /* Hero: center copywriting */
+    .hero {
+        height: auto;
+        min-height: 500px;
+        padding: 120px 0 60px;
+    }
+    .hero::after {
+        height: 3px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 40px;
+    }
+    .hero p {
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Hero buttons: stack vertically, block style */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-md);
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Visi Misi: mobile */
+    .visi-misi-header h2 {
+        font-size: 30px;
+    }
+    .visi-misi-subtitle {
+        font-size: 16px;
+    }
+    .visi-misi-card {
+        padding: 36px 28px;
+        max-width: 100%;
+        text-align: center;
+    }
+    .visi-misi-card-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .visi-misi-accent {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .visi-misi-card h3 {
+        font-size: 28px;
+    }
+    .visi-misi-list {
+        text-align: left;
+    }
+    .visi-misi-list li {
+        font-size: 15px;
+        justify-content: flex-start;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+    .about-content h2 {
+        font-size: 36px;
+    }
+    .about-image img {
+        height: 240px;
+    }
+
+    .projects-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-lg);
+    }
+
+    .projects-header h2 {
+        font-size: 36px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .project-card {
+        height: 300px;
+    }
+    .project-card.large {
+        grid-column: span 1;
+    }
+
+    .estate-info {
+        text-align: center;
+    }
+    .estate-info h2 {
+        font-size: 36px;
+    }
+
+    /* Estate features: 2x2 grid */
+    .estate-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+    }
+
+    .estate-item {
+        border-right: none;
+        border-bottom: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .estate-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .estate-divider {
+        display: none;
+    }
+
+    .estate-cta {
+        flex-direction: column;
+        gap: var(--space-lg);
+        padding: var(--space-xl) var(--space-md);
+        border-radius: 16px;
+        margin: var(--space-3xl) 0 0;
+        width: 100%;
+    }
+
+    .estate-btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .footer-brand p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-contact li {
+        justify-content: center;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .footer-social {
+        align-items: center;
+    }
+}

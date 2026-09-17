@@ -1,0 +1,29 @@
+/* ============================================
+   PREFERS REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .project-card:hover,
+    .estate-item:hover,
+    .value-item:hover,
+    .btn-primary:hover,
+    .nav-cta:hover,
+    .estate-btn:hover,
+    .about-btn:hover,
+    .projects-btn:hover,
+    .btn-secondary:hover,
+    .social-icons a:hover,
+    .footer-links a:hover,
+    .menu a:hover {
+        transform: none;
+    }
+    .project-card:hover img {
+        transform: none;
+    }
+}

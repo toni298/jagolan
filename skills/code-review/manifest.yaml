@@ -1,0 +1,20 @@
+name: code-review
+priority: 80
+auto_activate: true
+triggers:
+  - review code
+  - code review
+  - best practice
+  - cek code
+  - pull request
+  - diff
+dependencies:
+  []
+related:
+  - security-audit
+  - performance-optimization
+  - refactoring
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

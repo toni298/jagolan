@@ -1,0 +1,22 @@
+name: security-audit
+priority: 90
+auto_activate: true
+triggers:
+  - security
+  - audit
+  - xss
+  - csrf
+  - sqli
+  - auth bypass
+  - secret
+  - vulnerability
+dependencies:
+  []
+related:
+  - backend-engineering
+  - frontend-engineering
+  - devops-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

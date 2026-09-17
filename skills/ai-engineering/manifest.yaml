@@ -1,0 +1,25 @@
+name: ai-engineering
+priority: 75
+auto_activate: true
+triggers:
+  - ai
+  - llm
+  - agent
+  - rag
+  - embedding
+  - vector
+  - prompt
+  - model
+  - openrouter
+  - tool calling
+dependencies:
+  []
+related:
+  - backend-engineering
+  - security-audit
+  - product-engineering
+  - performance-optimization
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

@@ -1,0 +1,18 @@
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: var(--space-section) 0;
+}
+
+section.products-hero,
+section.stats-bar,
+section.filter-section,
+section.products-section {
+    padding: 0;
+}

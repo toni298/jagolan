@@ -1,0 +1,19 @@
+name: writing-plans
+priority: 90
+auto_activate: true
+triggers:
+  - plan
+  - roadmap
+  - tasks
+  - breakdown
+  - implementation plan
+  - spec
+dependencies:
+  - analysis
+related:
+  - executing-plans
+  - product-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

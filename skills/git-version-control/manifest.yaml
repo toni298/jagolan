@@ -1,0 +1,22 @@
+name: git-version-control
+priority: 78
+auto_activate: true
+triggers:
+  - git
+  - commit
+  - branch
+  - merge
+  - rebase
+  - conflict
+  - revert
+  - undo
+  - pull request
+  - pr
+dependencies: []
+related:
+  - executing-plans
+  - code-review
+  - release-management
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/decision-framework.md

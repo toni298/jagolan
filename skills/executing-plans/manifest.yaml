@@ -1,0 +1,19 @@
+name: executing-plans
+priority: 90
+auto_activate: true
+triggers:
+  - implement
+  - execute
+  - build
+  - apply plan
+  - code this
+  - make changes
+dependencies:
+  - writing-plans
+related:
+  - test-driven-development
+  - code-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

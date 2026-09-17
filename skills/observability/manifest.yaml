@@ -1,0 +1,21 @@
+name: observability
+priority: 76
+auto_activate: true
+triggers:
+  - logging
+  - logs
+  - metrics
+  - tracing
+  - monitoring
+  - alert
+  - dashboard
+  - slo
+dependencies: []
+related:
+  - devops-engineering
+  - incident-response
+  - backend-engineering
+  - performance-optimization
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md

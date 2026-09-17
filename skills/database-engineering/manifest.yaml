@@ -1,0 +1,21 @@
+name: database-engineering
+priority: 85
+auto_activate: true
+triggers:
+  - database
+  - schema
+  - table
+  - index
+  - query
+  - migration
+  - relation
+  - pagination
+dependencies:
+  []
+related:
+  - backend-engineering
+  - performance-optimization
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

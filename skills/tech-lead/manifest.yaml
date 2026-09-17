@@ -1,0 +1,21 @@
+name: tech-lead
+priority: 80
+auto_activate: true
+triggers:
+  - decision
+  - tradeoff
+  - choose
+  - vs
+  - estimate
+  - risk
+  - strategy
+  - tech lead
+dependencies:
+  - analysis
+related:
+  - architecture-review
+  - product-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

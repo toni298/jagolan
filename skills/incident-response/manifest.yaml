@@ -1,0 +1,21 @@
+name: incident-response
+priority: 88
+auto_activate: true
+triggers:
+  - incident
+  - outage
+  - down
+  - production broken
+  - users affected
+  - on-call
+  - sev1
+  - sev2
+dependencies:
+  - bug-investigation
+related:
+  - debugging
+  - devops-engineering
+  - observability
+shared:
+  - ../shared/severity-levels.md
+  - ../shared/templates/incident-postmortem-template.md

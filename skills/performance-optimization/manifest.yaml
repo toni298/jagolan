@@ -1,0 +1,21 @@
+name: performance-optimization
+priority: 80
+auto_activate: true
+triggers:
+  - slow
+  - performance
+  - optimize
+  - latency
+  - memory
+  - cpu
+  - query slow
+dependencies:
+  - analysis
+related:
+  - database-engineering
+  - backend-engineering
+  - frontend-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

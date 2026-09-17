@@ -1,0 +1,19 @@
+name: analysis
+priority: 95
+auto_activate: true
+triggers:
+  - analyze
+  - understand
+  - investigate
+  - compare
+  - explain
+  - assess
+dependencies:
+  - project-context
+related:
+  - writing-plans
+  - architecture-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

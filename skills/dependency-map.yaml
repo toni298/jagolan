@@ -1,0 +1,181 @@
+version: "1.1.0"
+
+default_foundation:
+  - project-context
+  - analysis
+
+workflow:
+  large_feature:
+    recommended:
+      - project-context
+      - analysis
+      - writing-plans
+      - executing-plans
+      - test-driven-development
+      - code-review
+      - documentation
+
+  bug_unknown_root_cause:
+    recommended:
+      - project-context
+      - bug-investigation
+      - debugging
+      - test-driven-development
+
+  backend_feature:
+    recommended:
+      - project-context
+      - backend-engineering
+      - database-engineering
+      - security-audit
+      - test-driven-development
+      - code-review
+
+  frontend_feature:
+    recommended:
+      - project-context
+      - frontend-engineering
+      - test-driven-development
+      - code-review
+
+  external_integration:
+    recommended:
+      - project-context
+      - integration-engineering
+      - backend-engineering
+      - security-audit
+      - observability
+      - test-driven-development
+
+  security_sensitive_change:
+    recommended:
+      - project-context
+      - security-audit
+      - code-review
+      - test-driven-development
+
+  performance_issue:
+    recommended:
+      - project-context
+      - performance-optimization
+      - observability
+      - database-engineering
+      - backend-engineering
+
+  architecture_decision:
+    recommended:
+      - project-context
+      - analysis
+      - architecture-review
+      - tech-lead
+
+  shipping_a_release:
+    recommended:
+      - project-context
+      - release-management
+      - git-version-control
+      - devops-engineering
+      - documentation
+
+  production_incident:
+    recommended:
+      - incident-response
+      - observability
+      - bug-investigation
+      - debugging
+
+dependencies:
+  writing-plans:
+    usually_after:
+      - analysis
+
+  executing-plans:
+    usually_after:
+      - writing-plans
+
+  git-version-control:
+    related:
+      - executing-plans
+      - code-review
+      - release-management
+
+  backend-engineering:
+    related:
+      - database-engineering
+      - security-audit
+      - performance-optimization
+      - devops-engineering
+      - integration-engineering
+
+  database-engineering:
+    related:
+      - backend-engineering
+      - performance-optimization
+
+  integration-engineering:
+    related:
+      - backend-engineering
+      - security-audit
+      - observability
+      - performance-optimization
+
+  security-audit:
+    related:
+      - backend-engineering
+      - frontend-engineering
+      - devops-engineering
+      - integration-engineering
+      - ai-engineering
+
+  performance-optimization:
+    related:
+      - database-engineering
+      - backend-engineering
+      - frontend-engineering
+      - observability
+
+  observability:
+    related:
+      - devops-engineering
+      - incident-response
+      - backend-engineering
+      - performance-optimization
+
+  incident-response:
+    usually_after:
+      - observability
+    related:
+      - bug-investigation
+      - debugging
+      - devops-engineering
+
+  release-management:
+    related:
+      - devops-engineering
+      - git-version-control
+      - security-audit
+
+  documentation:
+    related:
+      - project-context
+      - tech-lead
+      - architecture-review
+
+  architecture-review:
+    related:
+      - backend-engineering
+      - database-engineering
+      - frontend-engineering
+      - devops-engineering
+      - tech-lead
+
+  tech-lead:
+    related:
+      - architecture-review
+      - product-engineering
+
+  ai-engineering:
+    related:
+      - backend-engineering
+      - security-audit
+      - product-engineering

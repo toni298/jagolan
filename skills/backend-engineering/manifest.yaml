@@ -1,0 +1,22 @@
+name: backend-engineering
+priority: 85
+auto_activate: true
+triggers:
+  - backend
+  - api
+  - server
+  - auth
+  - queue
+  - cache
+  - webhook
+  - transaction
+dependencies:
+  - database-engineering
+related:
+  - security-audit
+  - performance-optimization
+  - devops-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

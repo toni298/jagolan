@@ -1,0 +1,24 @@
+name: product-engineering
+priority: 70
+auto_activate: true
+triggers:
+  - mvp
+  - prd
+  - roadmap
+  - feature
+  - user story
+  - product
+  - scope
+  - prioritize
+  - usability
+dependencies:
+  []
+related:
+  - tech-lead
+  - architecture-review
+  - writing-plans
+  - ai-engineering
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

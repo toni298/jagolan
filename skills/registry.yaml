@@ -1,0 +1,91 @@
+version: "1.1.0"
+name: agent-engineering-skill-pack
+description: >
+  A progressive-disclosure engineering skill pack for AI coding agents.
+  SKILL.md files act as orchestrators, references contain detailed knowledge,
+  and manifests define routing metadata.
+
+routing_principles:
+  - Load the smallest useful set of skills.
+  - Prefer project-context before implementation.
+  - Prefer analysis before planning.
+  - Prefer writing-plans before executing large changes.
+  - Prefer code-review, security-audit, and test-driven-development before risky changes.
+  - Use shared references for global standards.
+
+skills:
+  - name: project-context
+    level: foundation
+    priority: 100
+  - name: analysis
+    level: foundation
+    priority: 95
+  - name: writing-plans
+    level: planning
+    priority: 90
+  - name: executing-plans
+    level: implementation
+    priority: 90
+  - name: debugging
+    level: development
+    priority: 85
+  - name: bug-investigation
+    level: development
+    priority: 85
+  - name: git-version-control
+    level: development
+    priority: 78
+  - name: test-driven-development
+    level: quality
+    priority: 80
+  - name: code-review
+    level: quality
+    priority: 80
+  - name: refactoring
+    level: quality
+    priority: 75
+  - name: database-engineering
+    level: engineering
+    priority: 85
+  - name: backend-engineering
+    level: engineering
+    priority: 85
+  - name: frontend-engineering
+    level: engineering
+    priority: 80
+  - name: integration-engineering
+    level: engineering
+    priority: 80
+  - name: security-audit
+    level: advanced
+    priority: 90
+  - name: performance-optimization
+    level: advanced
+    priority: 80
+  - name: architecture-review
+    level: senior
+    priority: 85
+  - name: tech-lead
+    level: senior
+    priority: 80
+  - name: devops-engineering
+    level: operations
+    priority: 75
+  - name: observability
+    level: operations
+    priority: 76
+  - name: release-management
+    level: operations
+    priority: 74
+  - name: incident-response
+    level: operations
+    priority: 88
+  - name: ai-engineering
+    level: specialized
+    priority: 75
+  - name: product-engineering
+    level: product
+    priority: 70
+  - name: documentation
+    level: support
+    priority: 70

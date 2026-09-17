@@ -1,0 +1,20 @@
+name: frontend-engineering
+priority: 80
+auto_activate: true
+triggers:
+  - frontend
+  - ui
+  - react
+  - component
+  - state
+  - accessibility
+  - responsive
+dependencies:
+  []
+related:
+  - performance-optimization
+  - code-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

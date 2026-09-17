@@ -1,0 +1,21 @@
+name: integration-engineering
+priority: 80
+auto_activate: true
+triggers:
+  - integrate
+  - integration
+  - third-party
+  - external api
+  - webhook
+  - payment gateway
+  - sync with
+  - sdk
+dependencies: []
+related:
+  - backend-engineering
+  - security-audit
+  - observability
+  - performance-optimization
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md

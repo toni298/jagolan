@@ -1,0 +1,25 @@
+name: devops-engineering
+priority: 75
+auto_activate: true
+triggers:
+  - deployment
+  - ci
+  - cd
+  - docker
+  - infrastructure
+  - hosting
+  - rollback
+  - backup
+  - environment
+  - production
+dependencies:
+  []
+related:
+  - backend-engineering
+  - security-audit
+  - observability
+  - architecture-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

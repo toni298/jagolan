@@ -1,0 +1,108 @@
+/* ============================================
+   RESPONSIVE - TABLET (max-width: 992px)
+   ============================================ */
+@media (max-width: 992px) {
+    /* Header: logo + menu visible (default) */
+    .nav-cta {
+        display: none;
+    }
+
+    /* Hero: center copywriting */
+    .hero::after {
+        height: 3px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    /* Visi Misi: stack cards on tablet */
+    .visi-misi-cards {
+        flex-direction: column;
+        gap: var(--space-xl);
+        align-items: center;
+    }
+    .visi-misi-card {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    .visi-misi-card-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .visi-misi-accent {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .visi-misi-list {
+        text-align: left;
+    }
+    .visi-misi-list li {
+        justify-content: flex-start;
+    }
+    .visi-misi-card-divider {
+        margin: -30px auto;
+    }
+    .visi-misi-header h2 {
+        font-size: 38px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .about-image img {
+        height: 280px;
+    }
+
+    .estate-top {
+        flex-direction: column;
+        gap: var(--space-2xl);
+    }
+
+    .estate-info {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .estate-features {
+        flex-wrap: wrap;
+        gap: var(--space-lg);
+    }
+
+    .estate-item {
+        flex: 0 0 calc(50% - var(--space-lg));
+        border-right: none;
+        padding: 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card.large {
+        grid-column: span 2;
+    }
+
+    .values-wrapper {
+        flex-wrap: wrap;
+        gap: var(--space-xl);
+    }
+
+    .value-item {
+        flex: 1 1 calc(50% - var(--space-xl));
+        min-width: 200px;
+    }
+
+    .value-divider {
+        display: none;
+    }
+}

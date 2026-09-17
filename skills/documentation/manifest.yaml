@@ -1,0 +1,20 @@
+name: documentation
+priority: 70
+auto_activate: true
+triggers:
+  - document
+  - documentation
+  - dokumentasi
+  - readme
+  - api docs
+  - runbook
+  - comment
+  - explain how
+dependencies: []
+related:
+  - project-context
+  - tech-lead
+  - architecture-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/glossary.md

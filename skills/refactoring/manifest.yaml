@@ -1,0 +1,19 @@
+name: refactoring
+priority: 75
+auto_activate: true
+triggers:
+  - refactor
+  - clean code
+  - improve code
+  - simplify
+  - remove duplication
+  - too many if
+dependencies:
+  - test-driven-development
+related:
+  - code-review
+  - architecture-review
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md

@@ -1,0 +1,19 @@
+name: debugging
+priority: 85
+auto_activate: true
+triggers:
+  - debug
+  - error
+  - stack trace
+  - fix bug
+  - not working
+  - crash
+dependencies:
+  - project-context
+related:
+  - bug-investigation
+  - test-driven-development
+shared:
+  - ../shared/engineering-principles.md
+  - ../shared/severity-levels.md
+  - ../shared/decision-framework.md
