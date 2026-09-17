@@ -13,6 +13,7 @@ use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Encoders\JpegEncoder;
 use App\Jobs\OptimizeImageJob;
 use Illuminate\Http\UploadedFile;
+use Cloudinary\Cloudinary;
 
 class ImageService
 {
@@ -93,7 +94,6 @@ class ImageService
      */
     public function optimizeUpload($file, string $directory = 'uploads', int $maxWidth = 1920, int $quality = 80): string
     {
-        // Fallback: store original file if no driver available
         if (!$this->canProcessImages()) {
             return $this->storeOnCloudinary($file, $directory);
         }
@@ -109,11 +109,18 @@ class ImageService
             }
 
             $encoded = $image->encode(new WebpEncoder($quality));
+            $tempFile = tempnam(sys_get_temp_dir(), 'cloudinary_');
+            file_put_contents($tempFile, (string) $encoded);
 
-            $disk = Storage::disk('cloudinary');
-            $disk->put($storagePath, (string) $encoded, ['resource_type' => 'image']);
+            $response = app(Cloudinary::class)->uploadApi()->upload($tempFile, [
+                'folder' => trim($directory, '/'),
+                'public_id' => $fileName,
+                'resource_type' => 'image',
+            ]);
 
-            return $disk->url($storagePath);
+            @unlink($tempFile);
+
+            return $response['secure_url'] ?? $response['url'] ?? $storagePath;
         } catch (\Throwable $e) {
             Log::warning('ImageService: Cloudinary direct upload fallback triggered', ['error' => $e->getMessage()]);
             return $this->storeOnCloudinary($file, $directory);
@@ -150,14 +157,19 @@ class ImageService
             }
 
             $encoded = $image->encode(new WebpEncoder($quality));
-            $encodedData = (string) $encoded;
+            $tempFile = tempnam(sys_get_temp_dir(), 'cloudinary_');
+            file_put_contents($tempFile, (string) $encoded);
 
-            $cloudinaryDisk = Storage::disk('cloudinary');
-            $cloudinaryDisk->put($storagePath, $encodedData, ['resource_type' => 'image']);
+            $response = app(Cloudinary::class)->uploadApi()->upload($tempFile, [
+                'folder' => trim($directory, '/'),
+                'public_id' => $fileName,
+                'resource_type' => 'image',
+            ]);
 
-            unset($image, $encoded, $encodedData);
+            @unlink($tempFile);
+            unset($image, $encoded, $tempFile);
 
-            return $cloudinaryDisk->url($storagePath);
+            return $response['secure_url'] ?? $response['url'] ?? $storagePath;
         } catch (\Exception $e) {
             Log::error('ImageService: Error during optimization', [
                 'error' => $e->getMessage(),
@@ -180,12 +192,15 @@ class ImageService
     public function storeOnCloudinary(UploadedFile $file, string $directory = 'products', ?string $filename = null): string
     {
         $fileName = $filename ?? Str::random(20) . '.' . strtolower($file->getClientOriginalExtension() ?: 'jpg');
-        $path = trim($directory, '/') . '/' . $fileName;
+        $safeDirectory = trim($directory, '/');
 
-        $cloudinaryDisk = Storage::disk('cloudinary');
-        $cloudinaryDisk->put($path, file_get_contents($file->getRealPath()), ['resource_type' => 'image']);
+        $response = app(Cloudinary::class)->uploadApi()->upload($file->getRealPath(), [
+            'folder' => $safeDirectory,
+            'public_id' => $fileName,
+            'resource_type' => 'image',
+        ]);
 
-        return $cloudinaryDisk->url($path);
+        return $response['secure_url'] ?? $response['url'] ?? $file->getClientOriginalName();
     }
 
     /**
