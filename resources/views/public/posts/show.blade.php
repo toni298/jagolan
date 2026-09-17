@@ -7,7 +7,7 @@
 @section('og_type', 'article')
 @section('og_title', $post->title . ' - PT Jago Bangun Persada')
 @section('og_description', Str::limit(strip_tags($post->content), 160))
-@section('og_image', $post->featured_image ? asset('storage/' . $post->featured_image) :
+@section('og_image', $post->featured_image ? image_url($post->featured_image) :
     asset('assets/img/banner/banner1.png'))
 @section('og_url', route('posts.show', $post->slug))
 
@@ -64,7 +64,7 @@
                     <!-- Featured Image -->
                     @if ($post->featured_image)
                         <div class="mb-4">
-                            <img src="{{ asset('storage/' . $post->featured_image) }}" class="img-fluid rounded shadow"
+                            <img src="{{ image_url($post->featured_image) }}" class="img-fluid rounded shadow"
                                 alt="{{ $post->title }}" style="width: 100%; max-height: 400px; object-fit: cover;">
                         </div>
                     @endif
@@ -136,11 +136,11 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     @if ($post->product->primaryImage)
-                                        <img src="{{ asset('storage/' . $post->product->primaryImage->image_path) }}"
+                                        <img src="{{ image_url($post->product->primaryImage->image_path) }}"
                                             class="rounded me-3" width="80" height="80" style="object-fit: cover;"
                                             alt="{{ $post->product->name }}">
                                     @elseif($post->product->banner_image)
-                                        <img src="{{ asset('storage/' . $post->product->banner_image) }}"
+                                        <img src="{{ image_url($post->product->banner_image) }}"
                                             class="rounded me-3" width="80" height="80" style="object-fit: cover;"
                                             alt="{{ $post->product->name }}">
                                     @else
@@ -224,7 +224,7 @@
         "@type": "Article",
         "headline": "{{ $post->title }}",
         "description": "{{ Str::limit(strip_tags($post->content), 160) }}",
-        "image": "{{ $post->featured_image ? asset('storage/' . $post->featured_image) : asset('assets/img/banner/banner1.png') }}",
+        "image": "{{ $post->featured_image ? image_url($post->featured_image) : asset('assets/img/banner/banner1.png') }}",
         "datePublished": "{{ $post->published_at ? $post->published_at->toIso8601String() : $post->created_at->toIso8601String() }}",
         "dateModified": "{{ $post->updated_at->toIso8601String() }}",
         "author": {

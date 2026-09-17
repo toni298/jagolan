@@ -155,7 +155,7 @@
                 <div class="card-body">
                     <div class="text-center mb-3">
                         @if($user->avatar)
-                            <img src="{{ asset('storage/' . $user->avatar) }}" 
+                            <img src="{{ image_url($user->avatar) }}" 
                                  alt="Avatar" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
                         @else
                             <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=081D48&color=fff&size=100" 

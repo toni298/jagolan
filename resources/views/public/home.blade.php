@@ -9,7 +9,7 @@
     $landing['hero']['subtitle'] ??
     'Developer profesional dan terpercaya sejak 2012 menghadirkan
     hunian modern berkualitas di Kudus dan sekitarnya.')
-@section('og_image', !empty($landing['hero']['image']) ? asset('storage/' . $landing['hero']['image']) :
+@section('og_image', !empty($landing['hero']['image']) ? image_url($landing['hero']['image']) :
     asset('assets/img/banner/banner1.png'))
 @section('og_url', route('home'))
 @section('canonical', route('home'))
@@ -612,7 +612,7 @@
 
 @section('content')
     <section class="hero">
-        <img src="{{ !empty($landing['hero']['image']) ? asset('storage/' . $landing['hero']['image']) : asset('assets/img/banner/banner1.png') }}"
+        <img src="{{ !empty($landing['hero']['image']) ? image_url($landing['hero']['image']) : asset('assets/img/banner/banner1.png') }}"
             class="hero-bg" alt="">
         <div class="hero-overlay"></div>
 
@@ -699,10 +699,10 @@
                                 <div class="lp-slide">
                                     <div class="certificate-card">
                                         @if (!empty($cert['image']))
-                                            <a href="{{ asset('storage/' . $cert['image']) }}" data-fancybox="certificates"
+                                            <a href="{{ image_url($cert['image']) }}" data-fancybox="certificates"
                                                 data-caption="{{ $cert['name'] ?? 'Sertifikat' }}">
                                                 <div class="certificate-image">
-                                                    <img src="{{ asset('storage/' . $cert['image']) }}"
+                                                    <img src="{{ image_url($cert['image']) }}"
                                                         alt="{{ $cert['name'] ?? 'Sertifikat' }}" loading="lazy">
                                                 </div>
                                             </a>
@@ -796,7 +796,7 @@
                         style="cursor:pointer;" role="link" tabindex="0"
                         aria-label="Lihat detail {{ $product->name }}">
                         @if ($product->banner_image)
-                            <img src="{{ asset('storage/' . $product->banner_image) }}" alt="{{ $product->name }}">
+                            <img src="{{ image_url($product->banner_image) }}" alt="{{ $product->name }}">
                         @else
                             <img src="{{ asset('assets/img/about/about-building.jpg') }}" alt="{{ $product->name }}">
                         @endif
@@ -1003,7 +1003,7 @@
                                         <p class="testimonial-message">"{{ $testi->message }}"</p>
                                         <div class="testimonial-author">
                                             @if ($testi->photo)
-                                                <img src="{{ asset('storage/' . $testi->photo) }}"
+                                                <img src="{{ image_url($testi->photo) }}"
                                                     alt="{{ $testi->name }}" class="testimonial-photo" loading="lazy">
                                             @else
                                                 <span class="testimonial-photo testimonial-photo-placeholder"><i

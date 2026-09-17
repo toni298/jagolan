@@ -40,7 +40,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card blog-card h-100">
                             @if ($post->featured_image)
-                                <img src="{{ asset('storage/' . $post->featured_image) }}" class="card-img-top"
+                                <img src="{{ image_url($post->featured_image) }}" class="card-img-top"
                                     alt="{{ $post->title }}">
                             @else
                                 <img src="https://images.unsplash.com-1582407947092-155a47888425?w=500" class="card-img-top"

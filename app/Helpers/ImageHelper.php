@@ -4,6 +4,16 @@ namespace App\Helpers;
 
 class ImageHelper
 {
+    public static function resolveImageUrl(string $src): string
+    {
+        return image_url($src);
+    }
+
+    public static function isRemoteUrl(string $src): bool
+    {
+        return is_string($src) && preg_match('/^https?:\/\//i', $src) === 1;
+    }
+
     /**
      * Generate lazy loading image tag with optional srcset
      */
@@ -17,7 +27,7 @@ class ImageHelper
         bool $fetchpriority = false
     ): string {
         $attributes = [
-            'src' => asset($src),
+            'src' => self::resolveImageUrl($src),
             'alt' => $alt,
             'loading' => $loading,
             'decoding' => 'async',
@@ -64,7 +74,7 @@ class ImageHelper
         
         // Add WebP source if available
         if ($webpSrc !== $src) {
-            $html .= '<source srcset="' . asset($webpSrc) . '" type="image/webp">';
+            $html .= '<source srcset="' . self::resolveImageUrl($webpSrc) . '" type="image/webp">';
         }
         
         // Add fallback image
@@ -80,6 +90,10 @@ class ImageHelper
      */
     public static function getWebPPath(string $src): string
     {
+        if (self::isRemoteUrl($src)) {
+            return $src;
+        }
+
         $pathInfo = pathinfo($src);
         $basePath = $pathInfo['dirname'] ?? '';
         $fileName = $pathInfo['filename'] ?? '';
@@ -116,7 +130,7 @@ class ImageHelper
             $responsivePath = $basePath . '/responsive/' . $fileName . '-' . $sizeName . '.webp';
             
             if (file_exists(public_path($responsivePath))) {
-                $srcset[] = asset($responsivePath) . ' ' . $width . 'w';
+                $srcset[] = self::resolveImageUrl($responsivePath) . ' ' . $width . 'w';
             }
         }
 
@@ -142,11 +156,11 @@ class ImageHelper
         if ($srcset) {
             $html .= '<source srcset="' . $srcset . '" sizes="' . $sizes . '" type="image/webp">';
         } elseif ($webpSrc !== $src) {
-            $html .= '<source srcset="' . asset($webpSrc) . '" type="image/webp">';
+            $html .= '<source srcset="' . self::resolveImageUrl($webpSrc) . '" type="image/webp">';
         }
         
         // Add fallback image with srcset if available
-        $imgAttrs = 'src="' . asset($src) . '" alt="' . e($alt) . '" loading="' . $loading . '" decoding="async"';
+        $imgAttrs = 'src="' . self::resolveImageUrl($src) . '" alt="' . e($alt) . '" decoding="async" loading="' . $loading . '"';
         
         if ($class) {
             $imgAttrs .= ' class="' . e($class) . '"';

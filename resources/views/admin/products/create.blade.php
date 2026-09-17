@@ -12,7 +12,7 @@
                 ->map(
                     fn($i) => [
                         'id' => $i->id,
-                        'url' => asset('storage/' . $i->image_path),
+                        'url' => image_url($i->image_path),
                         'is_primary' => (bool) $i->is_primary,
                     ],
                 )
@@ -27,11 +27,11 @@
                         'slug' => $v->slug,
                         'description' => $v->description,
                         'status' => $v->status,
-                        'banner_url' => $primary ? asset('storage/' . $primary->image_path) : null,
+                        'banner_url' => $primary ? image_url($primary->image_path) : null,
                         'banner_id' => $primary ? $primary->id : null,
                         'gallery' => $v->images
                             ->where('is_primary', false)
-                            ->map(fn($i) => ['id' => $i->id, 'url' => asset('storage/' . $i->image_path)])
+                            ->map(fn($i) => ['id' => $i->id, 'url' => image_url($i->image_path)])
                             ->values(),
                         'facilities' => $v->facilities
                             ->map(fn($f) => ['name' => $f->name, 'value' => $f->value])
@@ -511,7 +511,7 @@
                     </div>
                     <div class="pf-card-sub">Upload banner utama produk. Rekomendasi ukuran 1920 x 600 px.</div>
                     <img class="pf-banner-preview" id="bannerPreview"
-                        @if ($isEdit && $product->banner_image) src="{{ asset('storage/' . $product->banner_image) }}" style="display:block" @endif>
+                        @if ($isEdit && $product->banner_image) src="{{ image_url($product->banner_image) }}" style="display:block" @endif>
                     <input type="file" name="banner_image" id="bannerInput" accept="image/*" hidden>
                     <div class="pf-upload" id="bannerDrop"><i class="fas fa-cloud-arrow-up"></i> Upload Banner <span>atau
                             drag &amp; drop file di sini</span></div>

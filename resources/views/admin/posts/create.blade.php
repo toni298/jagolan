@@ -71,7 +71,7 @@
                             <option value="">Pilih Produk</option>
                             @foreach($products as $product)
                                 <option value="{{ $product->id }}" 
-                                        data-banner="{{ $product->banner_image ? asset('storage/' . $product->banner_image) : '' }}"
+                                        data-banner="{{ $product->banner_image ? image_url($product->banner_image) : '' }}"
                                         {{ old('product_id') == $product->id ? 'selected' : '' }}>
                                     {{ $product->name }}
                                 </option>

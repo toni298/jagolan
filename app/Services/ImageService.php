@@ -328,7 +328,7 @@ class ImageService
                 continue;
             }
             if (isset($data['width'])) {
-                $srcset[] = asset('storage/' . $data['path']) . ' ' . $data['width'] . 'w';
+                $srcset[] = image_url($data['path']) . ' ' . $data['width'] . 'w';
             }
         }
 

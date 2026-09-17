@@ -72,7 +72,7 @@
                             <option value="">Pilih Produk</option>
                             @foreach($products as $product)
                                 <option value="{{ $product->id }}" 
-                                        data-banner="{{ $product->banner_image ? asset('storage/' . $product->banner_image) : '' }}"
+                                        data-banner="{{ $product->banner_image ? image_url($product->banner_image) : '' }}"
                                         {{ old('product_id', $post->product_id) == $product->id ? 'selected' : '' }}>
                                     {{ $product->name }}
                                 </option>
@@ -187,7 +187,7 @@
                     <label class="form-label fw-semibold">Preview</label>
                     <div class="banner-preview-box" id="featuredPreviewBox" style="min-height:180px;">
                         @if($post->featured_image)
-                            <img id="featuredPreviewImg" src="{{ asset('storage/' . $post->featured_image) }}" alt="Preview" style="max-width:100%;max-height:180px;border-radius:8px;object-fit:contain;">
+                            <img id="featuredPreviewImg" src="{{ image_url($post->featured_image) }}" alt="Preview" style="max-width:100%;max-height:180px;border-radius:8px;object-fit:contain;">
                             <div class="banner-empty-state" id="featuredEmptyState" style="display:none;">
                                 <i class="fas fa-image"></i>
                                 <span>Pilih Produk Terkait untuk menampilkan banner</span>

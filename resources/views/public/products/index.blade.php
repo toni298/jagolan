@@ -106,7 +106,7 @@
                     <article class="product-card">
                         <div class="product-image">
                             @if ($product->banner_image)
-                                <img src="{{ asset('storage/' . $product->banner_image) }}" alt="{{ $product->name }}"
+                                <img src="{{ image_url($product->banner_image) }}" alt="{{ $product->name }}"
                                     loading="lazy">
                             @else
                                 <div class="product-placeholder">

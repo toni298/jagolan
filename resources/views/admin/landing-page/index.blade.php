@@ -895,7 +895,7 @@
                                             <label class="form-label">Banner Image</label>
                                             <div class="d-flex align-items-center gap-3 mb-2">
                                                 @if (!empty($content['hero']['image']))
-                                                    <img src="{{ asset('storage/' . $content['hero']['image']) }}"
+                                                    <img src="{{ image_url($content['hero']['image']) }}"
                                                         class="lp-thumb" alt="banner">
                                                 @else
                                                     <span
@@ -1003,7 +1003,7 @@
                                                         title="Hapus Data"><i class="fas fa-trash"></i></button>
                                                     @if (!empty($cert['image']))
                                                         <div class="mb-2"><img
-                                                                src="{{ asset('storage/' . $cert['image']) }}"
+                                                                src="{{ image_url($cert['image']) }}"
                                                                 class="lp-thumb" alt=""></div>
                                                     @endif
                                                     <input type="hidden"
@@ -1068,7 +1068,7 @@
                                                         $tRating = 5;
                                                     }
                                                     $tPhoto = $testi['existing_photo'] ?? '';
-                                                    $tPhotoUrl = $tPhoto ? asset('storage/' . $tPhoto) : '';
+                                                    $tPhotoUrl = $tPhoto ? image_url($tPhoto) : '';
                                                     $tMsg = $testi['message'] ?? '';
                                                     $ratingLabels = [
                                                         1 => 'Sangat Kurang',

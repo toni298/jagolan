@@ -9,8 +9,8 @@
 @section('og_title', $product->title ?: $product->name)
 @section('og_description', $product->description ? Str::limit(strip_tags($product->description), 160) : 'Detail produk '
     . $product->name . ' - PT Jago Bangun Persada')
-@section('og_image', $product->banner_image ? asset('storage/' . $product->banner_image) : ($product->images->first() ?
-    asset('storage/' . $product->images->first()->image_path) : asset('assets/img/banner/banner1.png')))
+@section('og_image', $product->banner_image ? image_url($product->banner_image) : ($product->images->first() ?
+    image_url($product->images->first()->image_path) : asset('assets/img/banner/banner1.png')))
 @section('og_url', route('products.show', $product->slug))
 @section('canonical', route('products.show', $product->slug))
 
@@ -61,18 +61,18 @@
 
     $galleryImages = $product->images
         ->sortBy('sort_order')
-        ->map(fn($i) => asset('storage/' . $i->image_path))
+        ->map(fn($i) => image_url($i->image_path))
         ->values();
     // Banner produk selalu jadi foto pertama, diikuti galeri
     $fallbackImages = collect();
     if ($product->banner_image) {
-        $fallbackImages->push(asset('storage/' . $product->banner_image));
+        $fallbackImages->push(image_url($product->banner_image));
     }
     $fallbackImages = $fallbackImages->concat($galleryImages)->unique()->values();
 
     $variantPayload = $variants
         ->map(function ($v) use ($product, $pfIcon, $fallbackImages) {
-            $imgs = $v->images->sortBy('sort_order')->map(fn($i) => asset('storage/' . $i->image_path))->values();
+            $imgs = $v->images->sortBy('sort_order')->map(fn($i) => image_url($i->image_path))->values();
             if ($imgs->isEmpty()) {
                 $imgs = $fallbackImages;
             }
@@ -265,7 +265,7 @@
         "name": "{{ $product->title ?: $product->name }}",
         "description": "{{ $product->description ? Str::limit(strip_tags($product->description), 200) : 'Produk hunian berkualitas dari PT Jago Bangun Persada' }}",
         "image": [
-            "{{ $product->banner_image ? asset('storage/' . $product->banner_image) : ($product->images->first() ? asset('storage/' . $product->images->first()->image_path) : asset('assets/img/banner/banner1.png')) }}"
+            "{{ $product->banner_image ? image_url($product->banner_image) : ($product->images->first() ? image_url($product->images->first()->image_path) : asset('assets/img/banner/banner1.png')) }}"
         ],
         "brand": {
             "@type": "Brand",
